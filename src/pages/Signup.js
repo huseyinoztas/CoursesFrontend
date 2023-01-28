@@ -54,6 +54,7 @@ function SignUp() {
             <input type="password" className="form-control" id="parola" value={parola} onChange={(e)=>setParola(e.target.value)} />
         </div>
         <button type="submit" className="btn btn-primary">Üye Ol</button>
+        <p>Şifre en az 8 karakter büyük harf küçük harf ve sayı içermelidir</p>
     </form>
     </div>
 </div>
