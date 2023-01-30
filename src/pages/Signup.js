@@ -19,21 +19,25 @@ function SignUp() {
         }
     })
 
-    const handleSubmit= async (e)=>{
+   const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        if(email==='' || parola ===''){
-            return alert('Alanlar boş geçilemez')
+        if (email === "" || parola === "") {
+          return alert("Alanlar boş geçilemez");
         }
-
-        const yetkili=await yetkiliEkle()
-
-        
-        localStorage.setItem('token',yetkili.data.yetkiliEkle.token)
-        
-        setEmail('')
-        setParola('')
-    }
+      
+        if (parola.length < 8) {
+          return alert("Parola 8 karakterden az olamaz");
+        }
+      
+        try {
+          const yetkili = await yetkiliEkle();
+          localStorage.setItem("token", yetkili.data.yetkiliEkle.token);
+          setEmail("");
+          setParola("");
+        } catch (err) {
+          alert(err.message);
+        }
+      };
 
 
     if(loading) return <Spinner tip="grow" />
@@ -54,7 +58,8 @@ function SignUp() {
             <input type="password" className="form-control" id="parola" value={parola} onChange={(e)=>setParola(e.target.value)} />
         </div>
         <button type="submit" className="btn btn-primary">Üye Ol</button>
-        <p>Şifre en az 8 karakter büyük harf küçük harf ve sayı içermelidir</p>
+        {parola.length <=8 ?  <p>Parola en az 8 karakter büyük harf küçük harf ve sayı içermelidir</p> : <p>Parola :<FaCheckCircle/></p>}
+
     </form>
     </div>
 </div>
