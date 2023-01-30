@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client"
 import { ADD_YETKILI } from "../mutations/yetkiliMutation"
 import { useNavigate } from "react-router-dom"
 import Spinner from "../components/Spinner"
+import {FaCheckCircle} from 'react-icons/fa'
 
 
 
@@ -19,7 +20,7 @@ function SignUp() {
         }
     })
 
-   const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (email === "" || parola === "") {
           return alert("Alanlar boş geçilemez");
@@ -39,7 +40,6 @@ function SignUp() {
         }
       };
 
-
     if(loading) return <Spinner tip="grow" />
 
   return (
@@ -58,8 +58,9 @@ function SignUp() {
             <input type="password" className="form-control" id="parola" value={parola} onChange={(e)=>setParola(e.target.value)} />
         </div>
         <button type="submit" className="btn btn-primary">Üye Ol</button>
+       
         {parola.length <=8 ?  <p>Parola en az 8 karakter büyük harf küçük harf ve sayı içermelidir</p> : <p>Parola :<FaCheckCircle/></p>}
-
+        
     </form>
     </div>
 </div>
