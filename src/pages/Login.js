@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useMutation } from "@apollo/client"
 import { YETKILI_GIRIS } from "../mutations/yetkiliMutation"
+import {FaCheckCircle} from 'react-icons/fa'
 
 import Spinner from "../components/Spinner"
 
@@ -49,6 +50,7 @@ function Login() {
                 </div>
                 <button type="submit" className="btn btn-primary">Giriş</button>
                 {parola.length <=8 ?  <p>Parola en az 8 karakter büyük harf küçük harf ve sayı içermelidir</p> : <p>Parola :<FaCheckCircle/></p>}
+
                 {error && <p className="text-danger">{error.message}</p>}
             </form>
             
