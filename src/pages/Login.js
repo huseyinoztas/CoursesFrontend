@@ -48,7 +48,7 @@ function Login() {
                     <input type="password" className="form-control" id="parola" value={parola} onChange={(e)=>setParola(e.target.value)}   />
                 </div>
                 <button type="submit" className="btn btn-primary">Giriş</button>
-                <p>Şifre en az 8 karakter büyük harf küçük harf ve sayı içermelidir</p>
+                {parola.length <=8 ?  <p>Parola en az 8 karakter büyük harf küçük harf ve sayı içermelidir</p> : <p>Parola :<FaCheckCircle/></p>}
                 {error && <p className="text-danger">{error.message}</p>}
             </form>
             
